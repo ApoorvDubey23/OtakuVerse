@@ -1,0 +1,77 @@
+.article{
+    --active : 0.15;
+    --start: 0;
+}
+.article:is(:hover, :focus-visible){
+    z-index:2;
+}
+
+.glows::after,
+.glows::before {
+  --alpha: 0;
+	content: "";
+	background:conic-gradient(from 180deg at 50% 70%,hsla(0,0%,98%,1) 0deg,#eec32d 72.0000010728836deg,#ec4b4b 144.0000021457672deg,#709ab9 216.00000858306885deg,#4dffbf 288.0000042915344deg,hsla(0,0%,98%,1) 1turn);;
+	background-attachment: fixed;
+	position: absolute;
+	inset: -5px;
+	border: 10px solid transparent;
+	border-radius: 12px;
+	mask:
+  	linear-gradient(#0000, #0000),
+  	conic-gradient(from calc((var(--start) - (40)) * 1deg), #000 0deg, #fff, #0000 80deg);
+	mask-composite: intersect;
+	mask-clip: padding-box, border-box;
+	opacity: var(--active);
+	transition: opacity 1s;
+}
+
+.article::before {
+	position: absolute;
+	inset: 0;
+	border: 2px solid transparent;
+	content: "";
+	border-radius: 12px;
+	pointer-events: none;
+	background: hsl(280 10% 50% / 1);
+  	background-attachment: fixed;
+  	border-radius: 12px;
+  	mask:
+  	linear-gradient(#0000, #0000),
+  	conic-gradient(
+  		from calc((var(--start) - 100) * 1deg),
+  		hsl(0 0% 100% / 0.15) 0deg,
+  		white,
+  		hsl(0 0% 100% / 0.15) 220deg);
+  	mask-clip: padding-box, border-box;
+  	mask-composite: intersect;
+  	opacity: var(--active);
+  	transition: opacity 1s;
+}
+
+.article::after {
+	--bg-size: 100%;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  background: conic-gradient(from 180deg at 50% 70%,hsla(0,0%,98%,1) 0deg,#eec32d 72.0000010728836deg,#ec4b4b 144.0000021457672deg,#709ab9 216.00000858306885deg,#4dffbf 288.0000042915344deg,hsla(0,0%,98%,1) 1turn);;
+  background-attachment: fixed;
+  border-radius: 12px;
+  opacity: var(--active, 0);
+  transition: opacity 1s;
+  --alpha: 0;
+  inset: 0;
+  border: 2px solid transparent;
+  mask:
+  	linear-gradient(#0000, #0000),
+  	conic-gradient(from calc((var(--start) - 20) * 1deg), #0000 0deg, #fff, #0000 40deg);
+  filter: brightness(1.5);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+}
+
+.a {
+	transition: opacity 0.2s;
+}
+.a:is(:hover, :focus-visible) {
+	opacity: 1;
+}
