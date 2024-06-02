@@ -138,7 +138,7 @@ export default function ThreeDCardDemo() {
               </p>
             </div>
           </CardItem>
-          <div className="flex justify-between items-center mt-8">
+          <div className="flex justify-between gap-2 flex-wrap items-center mt-8">
             <Link href="/login">
               <button className="px-6 hover:shadow-md shadow-white py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xl font-bold ">
                 Already SignedUp?

@@ -19,6 +19,8 @@ export async function POST(request:NextRequest){
             if(!founduser){
                 return NextResponse.json({error:"User Does NOT exist"},{status:400});
             }
+            console.log(founduser);
+            
             const checkpassword=await bcrypt.compare(password,founduser.password);
             if(!checkpassword){
                 return NextResponse.json({
@@ -38,10 +40,13 @@ export async function POST(request:NextRequest){
 
                 }
             )
+
             response.cookies.set("token",token,{httpOnly:true});
             return response;
         
     } catch (error:any) {
+        console.log(error);
+        
         return NextResponse.json({error:error.message});
     }
 }

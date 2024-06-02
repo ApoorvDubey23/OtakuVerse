@@ -31,6 +31,9 @@ export async function POST(request:NextRequest){
             //sending verfication email
             // await sendEmail({email,emailType:"VERIFY",userId:newUser._id});
             // console.log("email sent");
+            console.log("created");
+            
+            console.log(creationresponse);
             
            return NextResponse.json({
             message:"User Created Successfully",
